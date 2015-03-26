@@ -1,6 +1,6 @@
-import sun.awt.image.ImageWatched;
+//import sun.awt.image.ImageWatched;
 
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
@@ -9,42 +9,41 @@ import java.util.StringTokenizer;
 public class column {
     public static void main(String[] args) {
 
-        String st1="a cb c b c a c b yes no yes no no yes yes";
+        String st1="a haha hoho  haha haha hoho cb c b c a c b yes no yes no no yes yes";
 
-        LinkedList catalog;
-        catalog=column.count(st1);
-        jiaclass objItem;
-        for (int i=0;i<catalog.size();i++){
-            objItem=new jiaclass();
-            objItem.set((jiaclass)catalog.get(i));
-            System.out.println(objItem.getName()+objItem.getNumber());
+        jiapack catalog;
+        catalog=count(st1);
+       // jiaclass objItem;
+        int s=catalog.size();
+        for (int i=0;i<s;i++){
+
+            System.out.println(catalog.get(i).getName()+catalog.get(i).getNumber());
         }
 
     }
 
 
 
-   static LinkedList count(String inputAString){
+   static jiapack count(String inputAString){
 
-       StringTokenizer st1=new StringTokenizer(inputAString);
+        StringTokenizer st1=new StringTokenizer(inputAString);
         int numberOfItems=st1.countTokens();
         String[] items=new String[numberOfItems];
+
         for (int i=0;i<numberOfItems;i++){
             items[i]=st1.nextToken();
             //    System.out.println(items[i]);
         }
 
-        LinkedList catalog=new LinkedList();
-        jiaclass objItem;
+        jiapack catalog=new jiapack();
+      //  jiaclass objItem;
         int numberInCatalog;
 
         int j;
         for (int i=0;i<numberOfItems;i++) {
             if (catalog.size() == 0) {
-                objItem=new jiaclass();
-                objItem.setName(items[i]);
-                objItem.setNumber(1);
-                catalog.add(objItem);
+
+                catalog.add(items[i],1);
                 //   System.out.println(catalog.get(0));
             }
             else
@@ -52,12 +51,12 @@ public class column {
                 numberInCatalog=catalog.size();
 
 
-                jiaclass tem=new jiaclass();
+            //    jiaclass tem=new jiaclass();
                 int flag=-1;
                 for (j=0;flag<0&&j<numberInCatalog;j++)
                 {
-                    tem.set((jiaclass)catalog.get(j));
-                    if (items[i].equals(tem.getName()))
+                  //  tem.set((jiaclass)catalog.get(j));
+                    if (items[i].equals(catalog.get(j).getName()))
                     {
                         flag=j;
                     }
@@ -65,17 +64,15 @@ public class column {
 
                 if(flag<0){
                     //none
-                    tem=new jiaclass();
-                    tem.setName(items[i]);
-                    tem.setNumber(1);
-                    catalog.add(tem);
+
+                    catalog.add(items[i],1);
 
                 }else{
                     //you
-                    tem=new jiaclass();
-                    tem.set((jiaclass)catalog.get(flag));
-                    tem.setNumber(tem.getNumber()+1);
-                    catalog.set(flag,tem);
+                   // tem=new jiaclass();
+                  //  tem.set((jiaclass)catalog.get(flag));
+                   // tem.setNumber(tem.getNumber()+1);
+                    catalog.increasByOne(flag);
                     //  temp=catalogNumber.get(j);
                     //   catalogNumber.set(j,temp+1);
                 }
