@@ -1,3 +1,5 @@
+import sun.awt.image.ImageWatched;
+
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -6,16 +8,30 @@ import java.util.StringTokenizer;
  */
 public class column {
     public static void main(String[] args) {
-        StringTokenizer st1;
+
+        String st1="a cb c b c a c b yes no yes no no yes yes";
+
+        LinkedList catalog;
+        catalog=column.count(st1);
+        jiaclass objItem;
+        for (int i=0;i<catalog.size();i++){
+            objItem=new jiaclass();
+            objItem.set((jiaclass)catalog.get(i));
+            System.out.println(objItem.getName()+objItem.getNumber());
+        }
+
+    }
 
 
-        st1=new StringTokenizer("a cb c b c a c b");
 
+   static LinkedList count(String inputAString){
+
+       StringTokenizer st1=new StringTokenizer(inputAString);
         int numberOfItems=st1.countTokens();
         String[] items=new String[numberOfItems];
         for (int i=0;i<numberOfItems;i++){
             items[i]=st1.nextToken();
-        //    System.out.println(items[i]);
+            //    System.out.println(items[i]);
         }
 
         LinkedList catalog=new LinkedList();
@@ -29,7 +45,7 @@ public class column {
                 objItem.setName(items[i]);
                 objItem.setNumber(1);
                 catalog.add(objItem);
-             //   System.out.println(catalog.get(0));
+                //   System.out.println(catalog.get(0));
             }
             else
             {
@@ -60,19 +76,12 @@ public class column {
                     tem.set((jiaclass)catalog.get(flag));
                     tem.setNumber(tem.getNumber()+1);
                     catalog.set(flag,tem);
-                 //  temp=catalogNumber.get(j);
-                 //   catalogNumber.set(j,temp+1);
+                    //  temp=catalogNumber.get(j);
+                    //   catalogNumber.set(j,temp+1);
                 }
             }
 
         }
-        for (int i=0;i<catalog.size();i++){
-            objItem=new jiaclass();
-            objItem.set((jiaclass)catalog.get(i));
-           System.out.println(objItem.getName()+objItem.getNumber());
-        }
-
-
+        return catalog;
     }
-
 }
