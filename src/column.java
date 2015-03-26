@@ -2,20 +2,20 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
- * Created by xiao on 3/25/2015.
+ * Created by xiao on 3/25/2015 for weijia
  */
 public class column {
     public static void main(String[] args) {
         StringTokenizer st1;
 
 
-        st1=new StringTokenizer("a b a");
+        st1=new StringTokenizer("a cb c b c a c b");
 
         int numberOfItems=st1.countTokens();
         String[] items=new String[numberOfItems];
         for (int i=0;i<numberOfItems;i++){
             items[i]=st1.nextToken();
-            System.out.println(items[i]);
+        //    System.out.println(items[i]);
         }
 
         LinkedList catalog=new LinkedList();
@@ -34,17 +34,32 @@ public class column {
             else
             {
                 numberInCatalog=catalog.size();
-                j=0;
-                while(j<numberInCatalog && items[i].equals(catalog.get(j).getName)==false)
-                {j++;}
-                System.out.println(j);
-                if(j==numberInCatalog){
+
+
+                jiaclass tem=new jiaclass();
+                int flag=-1;
+                for (j=0;flag<0&&j<numberInCatalog;j++)
+                {
+                    tem.set((jiaclass)catalog.get(j));
+                    if (items[i].equals(tem.getName()))
+                    {
+                        flag=j;
+                    }
+                }
+
+                if(flag<0){
                     //none
-                    catalog.add(items[i]);
-                    catalogNumber.add(1);
+                    tem=new jiaclass();
+                    tem.setName(items[i]);
+                    tem.setNumber(1);
+                    catalog.add(tem);
+
                 }else{
                     //you
-                    int temp=1;
+                    tem=new jiaclass();
+                    tem.set((jiaclass)catalog.get(flag));
+                    tem.setNumber(tem.getNumber()+1);
+                    catalog.set(flag,tem);
                  //  temp=catalogNumber.get(j);
                  //   catalogNumber.set(j,temp+1);
                 }
@@ -52,8 +67,9 @@ public class column {
 
         }
         for (int i=0;i<catalog.size();i++){
-            System.out.println(catalog.get(i));
-            System.out.println(catalogNumber.get(i));
+            objItem=new jiaclass();
+            objItem.set((jiaclass)catalog.get(i));
+           System.out.println(objItem.getName()+objItem.getNumber());
         }
 
 

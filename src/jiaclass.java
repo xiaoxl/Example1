@@ -1,19 +1,16 @@
 /**
- * Created by xiao on 3/25/2015.
+ * Created by xiao on 3/25/2015 for weijia
  */
 public class jiaclass {
     String name;
     int number;
-    void jiaclass(String a, int n)
-    {
-        name=a;
-        number=n;
-    }
+
 
     int getNumber()
     {
        return number;
     }
+
     String getName()
     {
         return name;
@@ -26,5 +23,10 @@ public class jiaclass {
     void setNumber(int n)
     {
         number=n;
+    }
+    void set(jiaclass A)
+    {
+        name=A.getName();
+        number=A.getNumber();
     }
 }
