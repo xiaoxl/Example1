@@ -9,9 +9,9 @@ import java.util.StringTokenizer;
 public class column {
     public static void main(String[] args) {
 
-        String st1="yes no yes no no yes a a a no b b";
+        String st1="yes no@yes no@no yes a a a@yes no@ b b";
 
-        LinkedList<jiaclass> catalog=count(stringsToArrays(st1));
+        LinkedList<jiaclass> catalog=count(stringsToArrays(st1,"@"));
        // jiaclass objItem;
         for(jiaclass item: catalog ) {
             System.out.println(item.getName()+item.getNumber());
@@ -31,6 +31,17 @@ public class column {
         return items;
     }
 
+    static String[] stringsToArrays(String inputAString, String sep) {
+        StringTokenizer st1 = new StringTokenizer(inputAString,sep);
+        int numberOfItems = st1.countTokens();
+        String[] items = new String[numberOfItems];
+
+        for (int i = 0; i < numberOfItems; i++) {
+            items[i] = st1.nextToken();
+            //    System.out.println(items[i]);
+        }
+        return items;
+    }
 
    static LinkedList<jiaclass> count(String[] items){
 
