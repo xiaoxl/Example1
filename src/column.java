@@ -9,9 +9,9 @@ import java.util.StringTokenizer;
 public class column {
     public static void main(String[] args) {
 
-        String st1="yes no@yes no@no yes a a a@yes no@ b b";
+        String st1="yes no\nyes no\nno yes a a a\nyes no \n b b";
 
-        LinkedList<jiaclass> catalog=count(stringsToArrays(st1,"@"));
+        LinkedList<jiaclass> catalog=count(stringsToArrays(st1,"\n"));
        // jiaclass objItem;
         for(jiaclass item: catalog ) {
             System.out.println(item.getName()+item.getNumber());
