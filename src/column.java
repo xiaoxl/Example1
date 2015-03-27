@@ -2,6 +2,7 @@
 
 //import java.util.Iterator;
 import java.io.IOException;
+//import java.nio.file.Files;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 /**
@@ -10,7 +11,8 @@ import java.util.StringTokenizer;
 public class column {
     public static void main(String[] args) throws IOException{
 
-        String file_name="d:/test.txt";
+        String file_name="src/test.txt";
+       // Files filen = new Files(file_name);
 
         try {
             readFile file=new readFile(file_name);
