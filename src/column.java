@@ -1,23 +1,40 @@
 
+
 //import java.util.Iterator;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
-
 /**
  * Created by xiao on 3/25/2015 for weijia
  */
 public class column {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
 
-        String st1="yes no\nyes no\nno yes a a a\nyes no \n b b";
+        String file_name="d:/test.txt";
 
-        LinkedList<jiaclass> catalog=count(stringsToArrays(st1,"\n"));
-       // jiaclass objItem;
-        for(jiaclass item: catalog ) {
-            System.out.println(item.getName()+item.getNumber());
+        try {
+            readFile file=new readFile(file_name);
+            String[] aryLines=file.OpenFile();
+
+            String st1=aryLines[0];
+
+            LinkedList<jiaclass> catalog=count(stringsToArrays(st1));
+            // jiaclass objItem;
+            for(jiaclass item: catalog ) {
+                System.out.println(item.getName()+item.getNumber());
+            }
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
         }
 
+       // String st1 = "yes no\nyes no\nno yes a a a\nyes no \n b b";
+
+
+
     }
+
+
 
     static String[] stringsToArrays(String inputAString) {
       StringTokenizer st1 = new StringTokenizer(inputAString);
