@@ -1,5 +1,5 @@
 
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -13,8 +13,7 @@ public class column {
 
         LinkedList<jiaclass> catalog=count(st1);
        // jiaclass objItem;
-        for(Iterator<jiaclass> i = catalog.iterator(); i.hasNext(); ) {
-            jiaclass item = i.next();
+        for(jiaclass item: catalog ) {
             System.out.println(item.getName()+item.getNumber());
         }
 
