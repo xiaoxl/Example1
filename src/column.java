@@ -1,4 +1,5 @@
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -12,10 +13,9 @@ public class column {
 
         LinkedList<jiaclass> catalog=count(st1);
        // jiaclass objItem;
-        int s=catalog.size();
-        for (int i=0;i<s;i++){
-
-            System.out.println(catalog.get(i).getName()+catalog.get(i).getNumber());
+        for(Iterator<jiaclass> i = catalog.iterator(); i.hasNext(); ) {
+            jiaclass item = i.next();
+            System.out.println(item.getName()+item.getNumber());
         }
 
     }
