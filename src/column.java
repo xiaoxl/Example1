@@ -1,6 +1,5 @@
-//import sun.awt.image.ImageWatched;
 
-//import java.util.LinkedList;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
@@ -9,10 +8,9 @@ import java.util.StringTokenizer;
 public class column {
     public static void main(String[] args) {
 
-        String st1="a haha hoho  haha haha hoho cb c b c a c b yes no yes no no yes yes";
+        String st1="yes no yes no no yes";
 
-        jiapack catalog;
-        catalog=count(st1);
+        LinkedList<jiaclass> catalog=count(st1);
        // jiaclass objItem;
         int s=catalog.size();
         for (int i=0;i<s;i++){
@@ -24,7 +22,7 @@ public class column {
 
 
 
-   static jiapack count(String inputAString){
+   static LinkedList<jiaclass> count(String inputAString){
 
         StringTokenizer st1=new StringTokenizer(inputAString);
         int numberOfItems=st1.countTokens();
@@ -35,15 +33,16 @@ public class column {
             //    System.out.println(items[i]);
         }
 
-        jiapack catalog=new jiapack();
-      //  jiaclass objItem;
+        LinkedList<jiaclass> catalog=new LinkedList<jiaclass>();
+        jiaclass objItem;
         int numberInCatalog;
 
         int j;
         for (int i=0;i<numberOfItems;i++) {
             if (catalog.size() == 0) {
-
-                catalog.add(items[i],1);
+                objItem=new jiaclass();
+                objItem.set(items[i],1);
+                catalog.add(objItem);
                 //   System.out.println(catalog.get(0));
             }
             else
@@ -64,15 +63,18 @@ public class column {
 
                 if(flag<0){
                     //none
-
-                    catalog.add(items[i],1);
+                    objItem=new jiaclass();
+                    objItem.set(items[i],1);
+                    catalog.add(objItem);
 
                 }else{
                     //you
                    // tem=new jiaclass();
                   //  tem.set((jiaclass)catalog.get(flag));
                    // tem.setNumber(tem.getNumber()+1);
-                    catalog.increasByOne(flag);
+                    objItem=new jiaclass();
+                    objItem.set(items[i],catalog.get(flag).getNumber()+1);
+                    catalog.set(flag,objItem);
                     //  temp=catalogNumber.get(j);
                     //   catalogNumber.set(j,temp+1);
                 }

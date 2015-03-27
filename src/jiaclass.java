@@ -16,6 +16,10 @@ public class jiaclass {
         return name;
     }
 
+    void set(String A,int n) {
+        name=A;
+        number=n;
+    }
     void setName(String A)
     {
         name=A;
